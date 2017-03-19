@@ -1,60 +1,60 @@
 class Employee(object):
-    EmployeeCode = property()
+    __EmployeeCode = 0
 
-    @EmployeeCode.getter
+    @property
     def EmployeeCode(self):
-        return self.EmployeeCode
+        return self.__EmployeeCode
 
     @EmployeeCode.setter
     def EmployeeCode(self, value):
-        self.EmployeeCode = value
+        self.__EmployeeCode = value
 
-    Pib = property()
+    __Pib = ''
 
-    @Pib.getter
+    @property
     def Pib(self):
-        return self.Pib
+        return self.__Pib
 
     @Pib.setter
     def Pib(self, value):
-        self.Pib = value
+        self.__Pib = value
 
-    Age = property()
-    @Age.getter
+    __Age = 0
+    @property
     def Age(self):
-        return  self.Age
+        return  self.__Age
 
     @Age.setter
     def Age(self, value):
-        self.Age = value
+        self.__Age = value
 
-    Address = property()
+    __Address = ''
 
-    @Address.getter
+    @property
     def Address(self):
-        return self.Address
+        return self.__Address
 
     @Address.setter
     def Address(self, value):
-        self.Address = value
+        self.__Address = value
 
-    PassportData = property()
+    __PassportData = property()
 
-    @PassportData.getter
+    @property
     def PassportData(self):
-        return self.PassportData
+        return self.__PassportData
 
     @PassportData.setter
     def PassportData(self, value):
-        self.PassportData = value
+        self.__PassportData = value
 
-    RoleCode = property()
+    __RoleCode = 0
 
-    @RoleCode.getter
+    @property
     def RoleCode(self):
-        return self.RoleCode
+        return self.__RoleCode
 
     @RoleCode.setter
     def RoleCode(self, value):
-        self.RoleCode = value
+        self.__RoleCode = value
 

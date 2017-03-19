@@ -1,56 +1,60 @@
 class Deposit(object):
-    DepositeCode = property()
-    @DepositeCode.getter
+    __DepositeCode = 0
+
+    @property
     def DepositeCode(self):
-        return self.DepositeCode
+        return self.__DepositeCode
+
     @DepositeCode.setter
     def DepositeCode(self, value):
-        self.DepositeCode = value
+        self.__DepositeCode = value
 
-    Title = property()
-    @Title.getter
+    __Title = ''
+
+    @property
     def Title(self):
-        return self.Title
+        return self.__Title
+
     @Title.setter
     def Title(self, value):
-        self.Title = value
+        self.__Title = value
 
-    MinTherm = property()
+    __MinTherm = 0
 
-    @MinTherm.getter
+    @property
     def MinTherm(self):
-        return self.MinTherm
+        return self.__MinTherm
 
     @MinTherm.setter
     def MinTherm(self, value):
-        self.MinTherm = value
+        self.__MinTherm = value
 
-    MinSum = property()
+    __MinSum = 0
 
-    @MinSum.getter
+    @property
     def MinSum(self):
-        return self.MinSum
+        return self.__MinSum
 
     @MinSum.setter
     def MinSum(self, value):
-        self.MinSum = value
+        self.__MinSum = value
 
-    CurrencyCode = property()
+    __CurrencyCode = 0
 
-    @CurrencyCode.getter
+    @property
     def CurrencyCode(self):
-        return self.CurrencyCode
+        return self.__CurrencyCode
 
     @CurrencyCode.setter
     def CurrencyCode(self, value):
-        self.CurrencyCode = value
+        self.__CurrencyCode = value
 
-    AdditionalCondition = property()
+    __AdditionalCondition = ''
 
-    @AdditionalCondition.getter
+    @property
     def AdditionalCondition(self):
-        return self.AdditionalCondition
+        return self.__AdditionalCondition
 
     @AdditionalCondition.setter
     def AdditionalCondition(self, value):
-        self.AdditionalCondition = value
+        self.__AdditionalCondition = value

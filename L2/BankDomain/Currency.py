@@ -1,29 +1,30 @@
 class Currency(object):
-    CurrencyCode = property()
+    __CurrencyCode = 0
 
-    @CurrencyCode.getter
+    @property
     def CurrencyCode(self):
-        return self.CurrencyCode
+        return self.__CurrencyCode
 
     @CurrencyCode.setter
     def CurrencyCode(self, value):
-        self.CurrencyCode = value
+        self.__CurrencyCode = value
 
-    Title = property()
+    __Title = ''
 
-    @Title.getter
+    @property
     def Title(self):
-        return self.Title
+        return self.__Title
 
     @Title.setter
     def Title(self, value):
-        self.Title = value
+        self.__Title = value
 
-    Course = property()
-    @Course.getter
+    __Course = 0.00
+
+    @property
     def Course(self):
-        return self.Course
+        return self.__Course
 
     @Course.setter
     def Course(self, value):
-        self.Course = value
+        self.__Course = value

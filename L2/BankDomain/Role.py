@@ -1,41 +1,43 @@
 class Role(object):
-    RoleCode = property()
-    @RoleCode.getter
+    __RoleCode = 0
+    @property
     def RoleCode(self):
-        return self.RoleCode
+        return self.__RoleCode
 
     @RoleCode.setter
     def RoleCode(self, value):
-        self.RoleCode = value
+        self.__RoleCode = value
 
-    Title = property()
+    __Title = ''
 
-    @Title.getter
+    @property
     def Title(self):
-        return self.Title
+        return self.__Title
+
     @Title.setter
     def Title(self, value):
-        self.Title = value
+        self.__Title = value
 
-    Salary = property()
-    @Salary.getter
+    __Salary = 0
+    @property
     def Salary(self):
-        return self.Salary
+        return self.__Salary
     @Salary.setter
     def Salary(self, value):
-        self.Salary = value
-    Duties = property()
-    @Duties.getter
+        self.__Salary = value
+    __Duties = ''
+    @property
     def Duties(self):
-        return self.Duties
+        return self.__Duties
     @Duties.setter
     def Duties(self, value):
-        self.Duties = value
+        self.__Duties = value
 
-    Requirements=property()
-    @Requirements.getter
-    def Requirenments(self):
-        return self.Requirements
+    __Requirements = ''
+    @property
+    def Requirements(self):
+        return self.__Requirements
+
     @Requirements.setter
-    def Requirenments(self, value):
-        self.Requirements = value
+    def Requirements(self, value):
+        self.__Requirements = value

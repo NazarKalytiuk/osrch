@@ -1,107 +1,109 @@
 class Investor(object):
-    InvestorCode = property()
+    __investorCode=0
 
-    @InvestorCode.getter
+    @property
     def InvestorCode(self):
-        return self.InvestorCode
+        return self.__investorCode
 
     @InvestorCode.setter
     def InvestorCode(self, value):
-        self.InvestorCode = value
+        self.__investorCode = value
 
+    __DepositeCode = 0
 
-    DepositeCode = property()
-
-    @DepositeCode.getter
+    @property
     def DepositeCode(self):
-        return self.DepositeCode
+        return self.__DepositeCode
     @DepositeCode.setter
     def DepositeCode(self, value):
-        self.DepositeCode = value
+        self.__DepositeCode = value
 
-    Pib = property()
+    __Pib = ''
 
-    @Pib.getter
+    @property
     def Pib(self):
-        return self.Pib
+        return self.__Pib
 
     @Pib.setter
     def Pib(self, value):
-        self.Pib = value
+        self.__Pib = value
 
-    DepositeSum = property()
+    __DepositeSum = 0
 
-    @DepositeSum.getter
+    @property
     def DepositeSum(self):
-        return self.DepositeSum
+        return self.__DepositeSum
 
     @DepositeSum.setter
     def DepositeSum(self, value):
-        self.DepositeSum = value
+        self.__DepositeSum = value
 
-    DepositeEnded = property()
+    __DepositeEnded = 0
 
-    @DepositeEnded.getter
+    @property
     def DepositeEnded(self):
-        return self.DepositeEnded
+        return self.__DepositeEnded
 
     @DepositeEnded.setter
     def DepositeEnded(self, value):
-        self.DepositeEnded = value
+        self.__DepositeEnded = value
 
-    EmployeeCode = property()
+    _EmployeeCode = 0
 
-    @EmployeeCode.getter
+    @property
     def EmployeeCode(self):
-        return self.EmployeeCode
+        return self.__EmployeeCode
 
     @EmployeeCode.setter
     def EmployeeCode(self, value):
-        self.EmployeeCode = value
+        self.__EmployeeCode = value
 
-    Address = property()
+    __Address = ''
 
-    @Address.getter
+    @property
     def Address(self):
-        return self.Address
+        return self.__Address
 
     @Address.setter
     def Address(self, value):
-        self.Address = value
+        self.__Address = value
 
-    Phone = property()
-    @Phone.getter
+    __Phone = ''
+
+    @property
     def Phone(self):
-        return self.Phone
+        return self.__Phone
 
     @Phone.setter
     def Phone(self, value):
-        self.Phone = value
+        self.__Phone = value
 
-    PassportData = property()
+    __PassportData = property()
 
-    @PassportData.getter
+    @property
     def PassportData(self):
-        return self.PassportData
+        return self.__PassportData
 
     @PassportData.setter
     def PassportData(self, value):
-        self.PassportData = value
+        self.__PassportData = value
 
-    DepositeDate = property()
-    @DepositeDate.getter
+    __DepositeDate = ''
+
+    @property
     def DepositeDate(self):
-        return self.DepositeDate
+        return self.__DepositeDate
 
     @DepositeDate.setter
     def DepositeDate(self, value):
-        self.DepositeDate = value
+        self.__DepositeDate = value
 
-    EndDepositeDate = property()
-    @EndDepositeDate.getter
+    __EndDepositeDate = ''
+
+    @property
     def EndDepositeDate(self):
-        return self.EndDepositeDate
+        return self.__EndDepositeDate
 
     @EndDepositeDate.setter
     def EndDepositeDate(self, value):
-        self.EndDepositeDate = value
+        self.__EndDepositeDate = value
