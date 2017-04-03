@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        {% for item in a %}
+            <div>
+            <p>{{ item.name }}</p>
+            <input type="text" value="{{ item.description }}"/>
+            </div>
+        {% endfor %}
+
+<form method="post" action="{% url 'post_index' %}">
+    {% csrf_token %}
+    <input type="text" name="name"/>
+    <input type="text" name="description"/>
+    <button type="submit">Create</button>
+</form>
+</body>
+</html>

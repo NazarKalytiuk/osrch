@@ -1,4 +1,7 @@
-class Investor(object):
+from BankDomain.AbstractActiveRecordModel import AbstractARModel
+from BankDomain.DBInitializer import DbInitializer
+
+class Investor(AbstractARModel):
     __investorCode=0
 
     @property
@@ -48,7 +51,7 @@ class Investor(object):
     def DepositeEnded(self, value):
         self.__DepositeEnded = value
 
-    _EmployeeCode = 0
+    __EmployeeCode = 0
 
     @property
     def EmployeeCode(self):
@@ -78,7 +81,7 @@ class Investor(object):
     def Phone(self, value):
         self.__Phone = value
 
-    __PassportData = property()
+    __PassportData = ''
 
     @property
     def PassportData(self):
@@ -107,3 +110,74 @@ class Investor(object):
     @EndDepositeDate.setter
     def EndDepositeDate(self, value):
         self.__EndDepositeDate = value
+
+    def load(self, paramDict):
+        query = """SELECT """
+        for key in Investor.__dict__.keys():
+            if key[0] != '_' and key not in ['load', 'save', 'delete']:
+                query += key
+                query += ','
+        query = query[:-1]
+        query += " FROM Investors WHERE "
+        equal_substr = '{attr_name} = {attr_value}'
+        counter = len(paramDict)
+        for param in paramDict:
+            query += equal_substr.format(attr_name=param, attr_value=paramDict[param])
+            if counter == 1:
+                query += ';'
+            else:
+                query += ' AND '
+            counter -= 1
+        print(query)
+        resultRow = DbInitializer.inst().ExecAndReturn(query)
+        if resultRow is not None:
+            attrCounter = 0
+            for key in Investor.__dict__.keys():
+                if key[0] != '_' and key not in ['load', 'save', 'delete']:
+                    valueOfCell = str(resultRow[attrCounter])
+                    setattr(self, key, valueOfCell)
+                    attrCounter += 1
+        else:
+            print("Row is not exist")
+
+    def save(self):
+        print('insert')
+        if self.InvestorCode == 0:
+            query = """INSERT INTO Investors ("""
+            for key in Investor.__dict__.keys():
+                if key[0] != '_' and key not in ['InvestorCode', 'load', 'save', 'delete']:
+                    query += key
+                    query += ','
+            query = query[:-1]
+            query += """) VALUES ("""
+            for key in Investor.__dict__.keys():
+                if key[0] != '_' and key not in ['InvestorCode', 'load', 'save', 'delete']:
+                    query += '\'' + str(getattr(self, key)) + '\''
+                    query += ','
+            query = query[:-1]
+            query += ')'
+            print(query)
+            DbInitializer.inst().ExecQuery(query)
+        else:
+            self._update()
+
+    def delete(self):
+        print('delete')
+        query = """DELETE FROM Investors WHERE InvestorCode="""
+        query += str(self.InvestorCode)
+        DbInitializer.inst().ExecQuery(query)
+
+    def _update(self):
+        print('update')
+        query = """UPDATE Investors SET """
+        for key in Investor.__dict__.keys():
+            if key[0] != '_' and key not in ['InvestorCode', 'load', 'save', 'delete']:
+                param = key + '=' + '\'' + str(getattr(self, key)) + '\''
+                query += param
+                query += ','
+        query = query[:-1]
+        whereParam = """InvestorCode = """ + str(self.InvestorCode)
+        query += """WHERE """ + whereParam
+        print(query)
+        DbInitializer.inst().ExecQuery(query)
+

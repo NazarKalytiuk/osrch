@@ -60,3 +60,15 @@ CREATE TABLE Investors (
 	EndDepositeDate TEXT NOT NULL
 )''')
         dbConnection.close()
+
+    def ExecQuery(self, query):
+        dbConnection = self.Connect()
+        dbConnection.execute(query)
+        dbConnection.commit()
+        dbConnection.close()
+
+    def ExecAndReturn(self, query):
+        dbConnection = self.Connect()
+        result = dbConnection.execute(query).fetchone()
+        dbConnection.close()
+        return result
