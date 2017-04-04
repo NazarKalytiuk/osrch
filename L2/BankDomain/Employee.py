@@ -42,7 +42,7 @@ class Employee(AbstractARModel):
     def Address(self, value):
         self.__Address = value
 
-    __PassportData = property()
+    __PassportData = ''
 
     @property
     def PassportData(self):

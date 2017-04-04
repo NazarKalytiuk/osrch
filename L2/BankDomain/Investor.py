@@ -121,6 +121,9 @@ class Investor(AbstractARModel):
         query += " FROM Investors WHERE "
         equal_substr = '{attr_name} = {attr_value}'
         counter = len(paramDict)
+        if counter == 0:
+            paramDict = {'InvestorCode': self.InvestorCode}
+            counter = 1
         for param in paramDict:
             query += equal_substr.format(attr_name=param, attr_value=paramDict[param])
             if counter == 1:
