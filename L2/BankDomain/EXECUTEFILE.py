@@ -3,7 +3,7 @@ from BankDomain.Currency import Currency
 from BankDomain.Deposits import Deposit
 from BankDomain.Role import Role
 from BankDomain.Employee import Employee
-
+from BankDomain.BankUOW import domainUOW
 from BankDomain.DBInitializer import DbInitializer
 from BankDomain.DAOs import EmployeeDAO
 
@@ -11,16 +11,33 @@ initializer = DbInitializer.inst()
 initializer.CreateTables()
 #initializer.CreateTables();
 
+uow = domainUOW()
 empDAO = EmployeeDAO()
 inst = Employee()
-inst.Pib = 'Bogdan Romanchuk Victorovich'
-inst.PassportData = 'Tu3434343'
-inst.Address = "Varash st.Peremogy"
+inst.EmployeeCode = 20
+inst.Pib = 'Kosobutskiy Bogdan'
+inst.PassportData = 'Tu354352'
+inst.Address = "Jitomir st."
 
-inst.Age = 20
+inst.Age = 23
 inst.RoleCode = 3
-empDAO.save(inst);
 
+#uow.registerNew(inst)
+#empDAO.save(inst);
+insert = Employee()
+insert.RoleCode = 2
+insert.Pib = 'Lazuto Maxim'
+insert.PassportData = 'MK233433'
+insert.Address = 'Kyiv'
+insert.Age = 22
+
+delete = Employee()
+delete.EmployeeCode = 5
+
+uow.registerNew(insert)
+uow.registerDeleteMark(delete)
+uow.registerDirty(inst)
+uow.commit()
 # emp = empDAO.load({'EmployeeCode': 5})
 #
 # for key in Employee.__dict__.keys():
