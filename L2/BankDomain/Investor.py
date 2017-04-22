@@ -132,7 +132,7 @@ class Investor(AbstractARModel):
                 query += ' AND '
             counter -= 1
         print(query)
-        resultRow = DbInitializer.inst().ExecAndReturn(query)
+        resultRow = DbInitializer.inst().ExecAndReturn(query)[0]
         if resultRow is not None:
             attrCounter = 0
             for key in Investor.__dict__.keys():

@@ -76,7 +76,7 @@ CREATE TABLE Investors (
     def ExecAndReturn(self, query):
         dbConnection = self.Connect()
         try:
-            result = dbConnection.execute(query).fetchone()
+            result = dbConnection.execute(query).fetchall()
             return result
         except:
             return None
