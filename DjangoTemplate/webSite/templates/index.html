@@ -5,17 +5,21 @@
     <title>Title</title>
 </head>
 <body>
-        {% for item in a %}
+        {% for item in allEmployees %}
             <div>
-            <p>{{ item.name }}</p>
-            <input type="text" value="{{ item.description }}"/>
+            <p>{{ item.pib }}</p>
+            <input type="text" value="{{ item.role }}"/>
+            <input type="number" value="{{ item.salary }}"/>
+            <input type="text" value="{{ item.requirenments }}"/>
             </div>
         {% endfor %}
 
 <form method="post" action="{% url 'post_index' %}">
     {% csrf_token %}
-    <input type="text" name="name"/>
-    <input type="text" name="description"/>
+    <input type="text" name="pib"/>
+    <input type="text" name="role"/>
+    <inptut type="number" name="salary"/>
+    <input type="text" name="requirenments"/>
     <button type="submit">Create</button>
 </form>
 </body>

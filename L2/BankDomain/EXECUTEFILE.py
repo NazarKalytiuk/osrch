@@ -46,11 +46,12 @@ uow.commit()
 #
 employeeList = empDAO.getAll()
 
-for emp in employeeList:
-    for key in Employee.__dict__.keys():
-         if key[0] != '_':
-            print(key + ' _ ' + str(getattr(emp, key)))
-    print('------------------------------------------')
+# for emp in employeeList:
+#     for key in Employee.__dict__.keys():
+#          if key[0] != '_':
+#             print(key + ' _ ' + str(getattr(emp, key)))
+#     print('------------------------------------------')
+print(Employee.__dict__)
 
 # inv = Investor()
 # inv.InvestorCode = 2
