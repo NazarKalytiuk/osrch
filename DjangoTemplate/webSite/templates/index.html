@@ -1,26 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-        {% for item in allEmployees %}
-            <div>
-            <p>{{ item.pib }}</p>
-            <input type="text" value="{{ item.role }}"/>
-            <input type="number" value="{{ item.salary }}"/>
-            <input type="text" value="{{ item.requirenments }}"/>
-            </div>
-        {% endfor %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-<form method="post" action="{% url 'post_index' %}">
-    {% csrf_token %}
-    <input type="text" name="pib"/>
-    <input type="text" name="role"/>
-    <inptut type="number" name="salary"/>
-    <input type="text" name="requirenments"/>
-    <button type="submit">Create</button>
-</form>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        header {
+            width: 100%;
+            height: 70px;
+            line-height: 70px;
+            font-size: 2rem;
+            background: #AD1457;
+            padding-left: 2rem;
+            color: white;
+        }
+        body {
+            width: auto;
+            align-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        table {
+            margin: 1rem;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            /*font-size: 2rem;*/
+            background: #424242;
+            padding-left: 2rem;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>Банківська система</header>
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Прізвище</th>
+                <th class="mdl-data-table__cell--non-numeric">Валюта</th>
+                <th>Сума</th>
+                <th class="mdl-data-table__cell--non-numeric">Період</th>
+                <th class="mdl-data-table__cell--non-numeric">Процент</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in list %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">{{ item.pib }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ item.deposit.currency }}</td>
+                <td>{{ item.deposit.sum|floatformat }}</td>
+                <td class="mdl-data-table__cell--non-numeric"> {{ item.deposit.periodDays }} днів</td>
+                <td class="mdl-data-table__cell--non-numeric"> {{ item.percent|floatformat}} </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/admin/">Керування</a>
+
+
+    <footer>&copy; Назар Калитюк, Наіль Кашапов, Сергій Романчук 2017</footer>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
+
 </html>

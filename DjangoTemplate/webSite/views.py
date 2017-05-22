@@ -5,21 +5,30 @@ from django.template import loader
 from .models import *
 
 
+class DTO(object):
+    pib = ''
+    currency = ''
+    sum = 0
+    period = 0
+    percent = 0.0
+
+
 def index(request):
-    allEmployees = Employee.objects.all()
+    allDeposits = Deposit.objects.all();
+    dtos = [];
+
+    for deposit in allDeposits:
+        dto = DTO();
+        dto.deposit = deposit;
+        dto.sum = float(deposit.sum);
+        dto.period = deposit.periodDays;
+        dto.pib = deposit.clientId.pib;
+        dto.percent = (float(deposit.persent) - 1) * 100
+        dtos.append(dto)
+
     template = loader.get_template('index.html')
     context = {
-        'a': allEmployees,
+        'list': dtos,
     }
     return HttpResponse(template.render(context, request))
 
-
-def post_index(request):
-    if request.method == 'POST':
-        a = Employee()
-        a.pib = request.POST['pib']
-        a.role = request.POST['role']
-        a.salary = request.POST['salary']
-        a.requirenments = request.POST['requirenments']
-        Employee.save(a)
-    return redirect('index')

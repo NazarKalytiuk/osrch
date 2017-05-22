@@ -56,3 +56,5 @@ class Deposit(models.Model):
     persent = models.DecimalField(max_digits=4, decimal_places=3)
 
     isClosed = models.NullBooleanField()
+    def __str__(self):
+        return "Emp: %s; Client: %s - %s" % (self.employeeId.__str__(), self.clientId.__str__(), self.date)
